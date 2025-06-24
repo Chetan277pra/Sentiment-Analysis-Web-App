@@ -1,6 +1,6 @@
 # app.py (Final Version using the VADER library)
 # This is the most accurate version for social media and mixed sentiment.
-
+import os
 from flask import Flask, render_template, request
 # We import the new, more powerful VADER "brain" from the NLTK library
 from nltk.sentiment.vader import SentimentIntensityAnalyzer
@@ -58,5 +58,7 @@ def index():
 
 # --- Start the web server ---
 if __name__ == '__main__':
-    app.run(debug=True, port=5001)
+    port = int(os.environ.get('PORT', 5000))
+    app.run(host='0.0.0.0', port=port)
+
 
